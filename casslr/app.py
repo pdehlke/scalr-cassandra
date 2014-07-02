@@ -8,7 +8,7 @@ DEFAULT_PORT = 8020
 
 app = Flask(__name__)
 app.config.update({
-    "ENGINE": FarmRoleEngine,
+    "ENGINE": FarmRoleEngine(),
 })
 
 
