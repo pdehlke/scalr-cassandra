@@ -31,8 +31,8 @@ setuptools.setup(
         "License :: OSI Approved :: Apache Software License",
     ],
     entry_points={},
-    install_requires=[],
+    install_requires=["flask"],
     extras_require={},
-    setup_requires=["nose", "flask"],
+    setup_requires=["nose"],
     tests_require=["tox", "nose"],
 )
