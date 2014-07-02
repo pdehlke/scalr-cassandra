@@ -7,11 +7,14 @@
                 <host cloud-location="us-east-1" cloud-location-zone="us-east-1a" external-ip="107.22.77.170" index="2" internal-ip="10.184.45.97" status="Running"/>
             </hosts>
         </role>
-        <role behaviour="mysql2,chef" id="123" name="mysql64-ubuntu1204" role-id="456">
+        <role behaviour="cassandra,chef" id="123" name="cassandra-ubuntu1204" role-id="456">
             <hosts>
-                <host cloud-location="us-east-1" external-ip="23.22.147.1" index="1" internal-ip="10.190.214.199" replication-master="1" status="Running"/>
-                <host cloud-location="us-east-1" external-ip="54.227.143.73" index="2" internal-ip="10.157.42.56" replication-master="0" status="Running"/>
-                <host cloud-location="us-east-1" external-ip="54.27.18.54" index="3" internal-ip="10.160.20.42" replication-master="0" status="Running"/>
+                <host cloud-location="us-east-1" external-ip="23.22.147.1" index="1" internal-ip="10.190.214.199" status="Running"/>
+                <host cloud-location="us-east-1" external-ip="23.22.147.2" index="2" internal-ip="10.190.214.200" status="Running"/>
+                <host cloud-location="us-west-1" external-ip="54.227.143.73" index="3" internal-ip="10.157.42.56" status="Running"/>
+                <host cloud-location="us-west-1" external-ip="54.227.143.74" index="4" internal-ip="10.157.42.57" status="Running"/>
+                <host cloud-location="eu-west-1" external-ip="54.27.18.54" index="5" internal-ip="10.160.20.42" status="Running"/>
+                <host cloud-location="us-west-2" external-ip="54.27.18.55" index="6" internal-ip="10.160.20.43" status="Initializing"/>
             </hosts>
         </role>
         <role behaviour="www" id="67455" name="lb-nginx64-ubuntu1204" role-id="38354">

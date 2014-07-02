@@ -1,15 +1,8 @@
 # coding:utf-8
 import os
 
-import unittest
 from casslr.lib.szradm import FarmRoleNotFound
-from casslr.test.util import TestFarmRoleEngine
-
-
-class FarmRoleEngineTestCase(unittest.TestCase):
-    def setUp(self):
-        self.test_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
-        self.engine = TestFarmRoleEngine()
+from casslr.test.util import FarmRoleEngineTestCase
 
 
 class FindRoleTestCase(FarmRoleEngineTestCase):
@@ -48,4 +41,4 @@ class UserDataTestCase(FarmRoleEngineTestCase):
             self.engine.responses = [f.read()]
 
     def test_farm_role_id(self):
-        self.assertEqual(74345, self.engine.current_farm_role_id())
+        self.assertEqual(123, self.engine.current_farm_role_id())

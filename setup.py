@@ -33,6 +33,6 @@ setuptools.setup(
     entry_points={},
     install_requires=[],
     extras_require={},
-    setup_requires=["nose"],
+    setup_requires=["nose", "flask"],
     tests_require=["tox", "nose"],
 )
