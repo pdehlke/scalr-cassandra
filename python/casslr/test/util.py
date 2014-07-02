@@ -2,7 +2,7 @@
 import os
 import unittest
 from xml.etree import ElementTree
-from casslr.lib import szradm
+from casslr import szradm
 
 
 class TestFarmRoleEngine(szradm.FarmRoleEngine):

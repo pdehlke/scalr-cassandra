@@ -1,7 +1,7 @@
 # coding:utf-8
 import os
 
-from casslr.lib.szradm import FarmRoleNotFound
+from casslr.szradm import FarmRoleNotFound
 from casslr.test.util import FarmRoleEngineTestCase
 
 

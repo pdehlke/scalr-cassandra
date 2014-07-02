@@ -1,7 +1,7 @@
 # coding:utf-8
 from flask import Flask
 
-from casslr.lib.szradm import FarmRoleEngine
+from casslr.szradm import FarmRoleEngine
 
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 8020
