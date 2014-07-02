@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+    <user-data>
+        <key name="farmid">
+            <value>
+                <![CDATA[19623]]>			</value>
+        </key>
+        <key name="role">
+            <value>
+                <![CDATA[base,chef]]>			</value>
+        </key>
+        <key name="httpproto">
+            <value>
+                <![CDATA[https]]>			</value>
+        </key>
+        <key name="region">
+            <value>
+                <![CDATA[us-east-1]]>			</value>
+        </key>
+        <key name="hash">
+            <value>
+                <![CDATA[bf7aa244de6512]]>			</value>
+        </key>
+        <key name="realrolename">
+            <value>
+                <![CDATA[etcd64-ubuntu1204]]>			</value>
+        </key>
+        <key name="szr_key">
+            <value>
+                <![CDATA[REDACTED]]>			</value>
+        </key>
+        <key name="serverid">
+            <value>
+                <![CDATA[3a7d26ef-ce4b-48df-bad0-493a2ab533bb]]>			</value>
+        </key>
+        <key name="p2p_producer_endpoint">
+            <value>
+                <![CDATA[https://my.scalr.com/messaging]]>			</value>
+        </key>
+        <key name="queryenv_url">
+            <value>
+                <![CDATA[https://my.scalr.com/query-env]]>			</value>
+        </key>
+        <key name="behaviors">
+            <value>
+                <![CDATA[base,chef]]>			</value>
+        </key>
+        <key name="farm_roleid">
+            <value>
+                <![CDATA[74345]]>			</value>
+        </key>
+        <key name="roleid">
+            <value>
+                <![CDATA[65820]]>			</value>
+        </key>
+        <key name="env_id">
+            <value>
+                <![CDATA[13696]]>			</value>
+        </key>
+        <key name="platform">
+            <value>
+                <![CDATA[ec2]]>			</value>
+        </key>
+        <key name="server_index">
+            <value>
+                <![CDATA[3]]>			</value>
+        </key>
+        <key name="cloud_server_id">
+            <value>
+                <![CDATA[i-05e65357]]>			</value>
+        </key>
+        <key name="cloud_location_zone">
+            <value>
+                <![CDATA[us-east-1c]]>			</value>
+        </key>
+        <key name="owner_email">
+            <value>
+                <![CDATA[thomas@scalr.com]]>			</value>
+        </key>
+        <key name="message_format">
+            <value>
+                <![CDATA[json]]>			</value>
+        </key>
+        <key name="s3bucket">
+            <value/>
+        </key>
+        <key name="cloud_storage_path">
+            <value>
+                <![CDATA[s3://]]>			</value>
+        </key>
+    </user-data>
+</response>

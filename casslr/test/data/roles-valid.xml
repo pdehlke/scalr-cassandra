@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<response>
+    <roles>
+        <role behaviour="base,chef" id="67453" name="base64-ubuntu1204" role-id="38241">
+            <hosts>
+                <host cloud-location="us-east-1" cloud-location-zone="us-east-1a" external-ip="54.81.242.68" index="1" internal-ip="10.164.63.197" status="Running"/>
+                <host cloud-location="us-east-1" cloud-location-zone="us-east-1a" external-ip="107.22.77.170" index="2" internal-ip="10.184.45.97" status="Running"/>
+            </hosts>
+        </role>
+        <role behaviour="mysql2,chef" id="123" name="mysql64-ubuntu1204" role-id="456">
+            <hosts>
+                <host cloud-location="us-east-1" external-ip="23.22.147.1" index="1" internal-ip="10.190.214.199" replication-master="1" status="Running"/>
+                <host cloud-location="us-east-1" external-ip="54.227.143.73" index="2" internal-ip="10.157.42.56" replication-master="0" status="Running"/>
+                <host cloud-location="us-east-1" external-ip="54.27.18.54" index="3" internal-ip="10.160.20.42" replication-master="0" status="Running"/>
+            </hosts>
+        </role>
+        <role behaviour="www" id="67455" name="lb-nginx64-ubuntu1204" role-id="38354">
+            <hosts>
+                <host cloud-location="us-east-1" cloud-location-zone="us-east-1a" external-ip="54.82.61.69" index="1" internal-ip="10.144.157.77" status="Running"/>
+            </hosts>
+        </role>
+    </roles>
+</response>
