@@ -1,6 +1,21 @@
 #!/bin/bash
 source "$(dirname $0)/../../lib/shared.sh"
 
+# First, wait for a seed node to be in Running state (indicating Cassandra will
+# soon start there)
+COUNTER=0
+MAX_ATTEMPT=100
+WAIT_TIME=10
+
+while [ -z "$(curl --silent --fail --location 127.0.0.1:8020/seeds)" ]; do
+  let COUNTER+=1
+  [ "${COUNTER}" -gt "${MAX_ATTEMPT}" ] && echo "Too many attempts, exiting" && exit 1
+  echo "No seed nodes at $(date)"
+  sleep "${WAIT_TIME}"
+done
+
+echo "Seed node found!"
+
 CASSANDRA_LOG="/var/log/cassandra/system.log"
 
 service cassandra status && {
