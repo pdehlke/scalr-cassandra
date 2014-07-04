@@ -1,8 +1,9 @@
-Casslr
-======
+Scalr-Cassandra
+===============
 
-Casslr is a support library to use Scalr with Cassandra. Functionally,
-Casslr is similar to Netflix Priam:
+Scalr-Cassandra is a support library to use Scalr with Cassandra.
+
+Functionally, this code is similar to Netflix Priam:
 
   + One backend service (found under python/) is in charge of identifying
     seed nodes for Cassandra using Scalarizr's admin interface (`szradm`), and
@@ -12,5 +13,5 @@ Casslr is similar to Netflix Priam:
     SeedProvider. Its purpose is simply to call the backend service over
     HTTP and retrieve the list of seed nodes.
 
-Casslr is designed to be compatible with Cassandra >= 2.0, so unlike Priam,
+This code is designed to be compatible with Cassandra >= 2.0, so unlike Priam,
 it does not perform token generation (which is no longer needed).
