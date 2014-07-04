@@ -9,7 +9,7 @@ service cassandra status && {
 }
 
 # Truncate the log
-echo > "${CASSANDRA_LOG}"
+echo > "${CASSANDRA_LOG}" || true
 
 service cassandra start
 
@@ -20,4 +20,4 @@ sleep 10
 cat "${CASSANDRA_LOG}"
 
 # Run nodetool to output our cluster status
-nodetool status
+nodetool status || echo "Nodetool returns an error - cluster may not be ready yet"
