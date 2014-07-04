@@ -28,7 +28,7 @@ echo > "${CASSANDRA_LOG}" || true
 
 service cassandra start
 
-sleep 10
+sleep 20
 
 # Escalate the log to Scalr
 # We would certainly need something a bit more robust here!
