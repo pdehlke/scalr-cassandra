@@ -22,6 +22,6 @@ class CasslrTestCase(FarmRoleEngineTestCase):
         self.assertEqual(200, response.status_code)
 
         seeds = response.data.decode("utf-8").split(",")
-        self.assertEqual(3, len(seeds))
+        self.assertEqual(2, len(seeds))
 
-        self.assertEqual(set(("10.190.214.199", "10.157.42.56", "10.160.20.42")), set(seeds))
+        self.assertEqual(set(("10.190.214.199", "10.157.42.57")), set(seeds))
