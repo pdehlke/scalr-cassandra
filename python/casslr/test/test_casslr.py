@@ -25,3 +25,7 @@ class CasslrTestCase(FarmRoleEngineTestCase):
         self.assertEqual(2, len(seeds))
 
         self.assertEqual(set(("10.190.214.199", "10.157.42.57")), set(seeds))
+
+    def test_status(self):
+        response = self.client.get('/status')
+        self.assertEqual(200, response.status_code)

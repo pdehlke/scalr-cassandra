@@ -32,6 +32,10 @@ def seeds():
 
     return ",".join(seeds)
 
+@app.route('/status')
+def status():
+    return "OK"
+
 
 if __name__ == '__main__':
     app.run(host=DEFAULT_HOST, port=DEFAULT_PORT)
