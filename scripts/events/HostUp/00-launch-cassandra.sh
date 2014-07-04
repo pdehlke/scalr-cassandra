@@ -8,7 +8,7 @@ service cassandra status && {
   exit 1
 }
 
-# Truncat the log
+# Truncate the log
 echo > "${CASSANDRA_LOG}"
 
 service cassandra start
@@ -18,3 +18,6 @@ sleep 10
 # Escalate the log to Scalr
 # We would certainly need something a bit more robust here!
 cat "${CASSANDRA_LOG}"
+
+# Run nodetool to output our cluster status
+nodetool status

@@ -23,12 +23,16 @@ EOF
 
 cat "$(dirname $0)/../../files/cassandra.yaml.base" >> "${CASSANDRA_YAML}"
 
+# This could largely be improved by using more precis information.
+# This is simply a sample, however
 cat << EOF > "${CASSANDRA_DC}"
 dc=${SCALR_CLOUD_LOCATION}
 rack=${SCALR_CLOUD_LOCATION_ZONE}
 EOF
 
-# Library to use casslr in Cassandra as a seed_provider
-apt-get install -y wget
-wget https://s3.amazonaws.com/com.scalr-training.cassandra/scalr-cassandra-0.2.jar
-mv scalr-cassandra-0.2.jar /usr/share/cassandra/lib
+# Library to use casslr in Cassandra as a seed_provider in Cassandra
+JAR_SRC=https://s3.amazonaws.com/com.scalr-training.cassandra/scalr-cassandra-0.2.jar
+JAR_DEST=/usr/share/cassandra/lib/scalr-cassandra.jar
+
+curl --fail --location --silent --output "${JAR_DEST}" "${JAR_SRC}"
+chmod 644 "${JAR_DEST}"
