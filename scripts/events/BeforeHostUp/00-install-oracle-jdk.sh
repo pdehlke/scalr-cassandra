@@ -20,7 +20,7 @@ curl --silent --head --fail "${PPA_BASE_URL}/dists/${CODENAME}" >/dev/null || {
 WEBUPD8_PPA_FILE=/etc/apt/sources.list.d/webupd8team.sources.list
 
 echo "deb ${PPA_BASE_URL} ${CODENAME} main" | tee "${WEBUPD8_PPA_FILE}"
-echo "deb-src ${PPA_BASE_URL} ${CODENAME} main" | tee "${WEBUPD8_PPA_FILE}"
+echo "deb-src ${PPA_BASE_URL} ${CODENAME} main" | tee -a "${WEBUPD8_PPA_FILE}"
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "${PPA_KEY_ID}"
 
 # Install Java
