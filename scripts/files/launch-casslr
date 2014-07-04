@@ -1,0 +1,3 @@
+gunicorn --daemon --pid /var/run/casslr.pid --bind "127.0.0.1:8020" \
+--access-logfile /var/log/casslr.access.log --error-logfile /var/log/casslr.error.log \
+casslr.app:app
