@@ -1,5 +1,6 @@
 # coding:utf-8
 import subprocess
+import functools
 import copy
 
 from xml.etree import ElementTree
@@ -8,7 +9,10 @@ from xml.etree import ElementTree
 STATUS_RUNNING = "Running"
 
 
-class FarmRoleException(Exception):
+class SzradmException(Exception):
+    pass
+
+class FarmRoleException(SzradmException):
     pass
 
 class FarmRoleNotFound(FarmRoleException):
@@ -16,6 +20,19 @@ class FarmRoleNotFound(FarmRoleException):
 
 class DuplicateFarmRole(FarmRoleException):
     pass
+
+class InvalidDataReturned(SzradmException):
+    pass
+
+
+def wrap_value_errors(f):
+    @functools.wraps(f)
+    def wrapper(*args, **kwargs):
+        try:
+            return f(*args, **kwargs)
+        except ValueError as e:
+            raise SzradmException(e.message)
+    return wrapper
 
 
 class Server(object):
@@ -27,6 +44,7 @@ class Server(object):
         self.status = status
 
     @classmethod
+    @wrap_value_errors
     def from_xml(cls, xml):
         attrs = xml.attrib
         return Server(int(attrs["index"]), attrs["cloud-location"], attrs["internal-ip"], attrs["external-ip"],
@@ -39,10 +57,11 @@ class FarmRole(object):
         self.servers = servers
 
     @classmethod
+    @wrap_value_errors
     def from_xml(cls, xml):
         id = int(xml.attrib["id"])
         servers = []
-        for server_xml in xml.iterfind("./hosts/host"):
+        for server_xml in xml.findall("./hosts/host"):
             servers.append(Server.from_xml(server_xml))
         return FarmRole(id, servers)
 
@@ -69,24 +88,28 @@ class FarmRoleEngine(object):
             raise FarmRoleException("Unable to access szradm: %s", proc.stderr.read())
         return ElementTree.parse(proc.stdout)
 
+    @wrap_value_errors
     def farm_role_by_id(self, farm_role_id):
         args = ["-q", "list-roles"]
         tree = self._szradm(args)
 
-        farm_role_xml = tree.find("./roles/role[@id='{0}']".format(farm_role_id))
+        # No XPath here: Python 2.6 support
+        for farm_role_xml in tree.findall("./roles/role"):
+            if int(farm_role_xml.attrib.get("id")) == farm_role_id:
+                return FarmRole.from_xml(farm_role_xml)
 
-        if farm_role_xml is None:
-            raise FarmRoleNotFound(farm_role_id)
+        raise FarmRoleNotFound(farm_role_id)
 
-        return FarmRole.from_xml(farm_role_xml)
 
+    @wrap_value_errors
     def current_farm_role_id(self):
         args = ["-q", "get-server-user-data"]
         tree = self._szradm(args)
 
-        node = tree.find("./user-data/key[@name='farm_roleid']/value")
-        id = int(node.text.strip())
+        # Same as above re: XPath
+        for udk_xml in tree.findall('./user-data/key'):
+            if udk_xml.attrib.get("name") == "farm_roleid":
+                return int(udk_xml.find('value').text.strip())
 
-        return id
-
+        raise InvalidDataReturned("No farm_roleid user-data key found")
 
