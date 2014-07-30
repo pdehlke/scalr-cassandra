@@ -14,6 +14,9 @@ pip install --upgrade casslr
 CASSLR_INSTALL_DIR="/usr/local/bin"
 mkdir -p "${CASSLR_INSTALL_DIR}"
 
+# Add the config file
+cp "$(dirname $0)/../../files/casslr.cfg" "/etc/casslr.cfg"
+
 LAUNCH_CASSLR="${CASSLR_INSTALL_DIR}/launch-casslr"
 cp "$(dirname $0)/../../files/launch-casslr" "${LAUNCH_CASSLR}"
 chmod 755 "${LAUNCH_CASSLR}"
