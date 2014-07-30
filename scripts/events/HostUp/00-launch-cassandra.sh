@@ -7,14 +7,29 @@ COUNTER=0
 MAX_ATTEMPT=100
 WAIT_TIME=10
 
-while [ -z "$(curl --silent --fail --location 127.0.0.1:8020/seeds)" ]; do
+while true; do
   let COUNTER+=1
-  [ "${COUNTER}" -gt "${MAX_ATTEMPT}" ] && echo "Too many attempts, exiting" && exit 1
+  [ "${COUNTER}" -gt "${MAX_ATTEMPT}" ] && {
+    echo "Too many attempts, exiting"
+    exit 1
+  }
+
+  # Don't make this a condition, because if curl fails due to a 500,
+  # we want to know and exit (it's no use waiting for seeds to come up if Casslr
+  # has crashed)
+  current_seeds="$(curl --silent --fail --location 127.0.0.1:8020/seeds)" || {
+    echo "Casslr is down, exiting"
+    exit 1
+  }
+
+  if [ -n "$current_seeds" ]; then
+    echo "Seed nodes found: $current_seeds"
+    break
+  fi
+
   echo "No seed nodes at $(date)"
   sleep "${WAIT_TIME}"
 done
-
-echo "Seed node found!"
 
 CASSANDRA_LOG="/var/log/cassandra/system.log"
 
