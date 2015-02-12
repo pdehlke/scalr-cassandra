@@ -5,7 +5,7 @@ echo "deb http://debian.datastax.com/community stable main" | tee /etc/apt/sourc
 curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 
 apt-get update
-apt-get install -y dsc20
+apt-get install -y dsc21
 
 # Ensure nothing is running, and remove initial chatter
 service cassandra stop
